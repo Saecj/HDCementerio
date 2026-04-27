@@ -51,7 +51,7 @@ function buildAdminRouter() {
 
 		return res.status(200).json({ ok: true, user: userResult.rows[0] });
 	});
-
+	//Creacionde metodo de empleado y permisos	
 	// Crear perfil empleado asociado a un user (1:1) + rol employee
 	router.post('/employees', requireRole('admin'), async (req, res) => {
 		const email = normalizeEmail(req.body?.email);
