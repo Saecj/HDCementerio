@@ -1,83 +1,95 @@
-# Cementerio (monorepo)
+Cementerio (Monorepo)
 
-## Requisitos
-- Node.js (recomendado LTS)
+Repositorio monolítico que contiene frontend y backend para la gestión de registros de cementerio.
 
-## Instalar dependencias
-Desde la raíz:
+🚀 Requisitos
+Node.js (recomendado: versión LTS)
+PostgreSQL
+📦 Instalación
 
-```bash
+Desde la raíz del proyecto:
+
 npm run install:all
-```
-
-## Base de datos (Postgres)
-1) Crea `backend/.env` desde `backend/.env.example` y completa credenciales.
-2) Ejecuta migraciones:
-
-```bash
+🗄️ Configuración de Base de Datos (PostgreSQL)
+Crear el archivo de entorno:
+cp backend/.env.example backend/.env
+Completar las credenciales de la base de datos en backend/.env.
+Ejecutar las migraciones:
 npm --prefix backend run db:migrate
-```
+🧪 Desarrollo
+Ejecutar frontend + backend
 
-Opcional (recomendado para empezar):
-- (Legacy) Antes se usaba OTP; ahora el flujo principal es por contraseña.
-
-## Desarrollo (frontend + backend)
 Desde la raíz:
 
-```bash
 npm run dev
-```
-
-Si estás dentro de una carpeta específica:
-
-- Dentro de `backend/`:
-
-```bash
+Ejecutar por separado
+Backend
+cd backend
 npm run dev
-```
-
-```bash
+# o
 npm run start
-```
-
-- Dentro de `frontend/`:
-
-```bash
+Frontend
+cd frontend
 npm run dev
-```
+🌐 Endpoints de desarrollo
+Backend
+Base: http://localhost:3001
+Health:
+/health
+/api/health
+/api/health/db
+Frontend
+http://localhost:5173
+🔐 Autenticación (Email + Contraseña)
 
-Nota: si ejecutas `npm --prefix backend ...` mientras tu terminal ya está en `backend/`, npm intentará buscar `backend/backend/package.json` y fallará con `ENOENT`.
+⚠️ Requiere ejecutar las migraciones:
 
-- Backend: `http://localhost:3001`
-  - Health: `http://localhost:3001/health`
-  - Health (proxy): `http://localhost:3001/api/health`
-  - Health BD: `http://localhost:3001/api/health/db`
-- Frontend: `http://localhost:5173`
+backend/sql/005_password_auth.sql
+backend/sql/006_email_verification.sql
+Endpoints
+Registro
+POST /api/auth/register
 
-## Login por correo + contraseña
+Body:
 
-Requiere aplicar las migraciones:
-- `backend/sql/005_password_auth.sql`
-- `backend/sql/006_email_verification.sql`
+{
+  "email": "...",
+  "documentId": "...",
+  "phone": "...",
+  "password": "...",
+  "confirmPassword": "...",
+  "acceptTerms": true
+}
+Verificación de correo
+POST /api/auth/verify-email
+Login
+POST /api/auth/login
+Usuario actual
+GET /api/auth/me
+🔎 Búsqueda (MVP)
+GET /api/search?q=...
+Requiere sesión activa.
+Devuelve lista de difuntos con ubicación y estado.
+📥 Carga de Datos (MVP - API)
+Admin
+Crear sector:
+POST /api/admin/sectors
+Crear tumba:
+POST /api/admin/graves
+Admin / Empleado
+Registrar entierro:
+POST /api/employee/burials
+⚙️ Notas importantes
 
-- `POST /api/auth/register` `{ email, documentId, phone?, password, confirmPassword, acceptTerms }` → crea un registro pendiente y envía código.
-- `POST /api/auth/verify-email` `{ email, code }` → crea la cuenta (verificada) y abre sesión.
-- `POST /api/auth/login` `{ email, password }` → crea sesión (cookie `sid`).
-- `GET /api/auth/me` → devuelve el usuario en sesión.
+El frontend usa un proxy de desarrollo, redirigiendo /api/* hacia:
 
-## Búsqueda (MVP)
-- `GET /api/search?q=...` (requiere sesión) → lista difuntos y su tumba/ubicación/estado.
+http://localhost:3001
+⚠️ Error común:
 
-## Carga de datos (MVP, solo API)
-- Admin:
-  - `POST /api/admin/sectors` `{ name }`
-  - `POST /api/admin/graves` `{ code, location_label, grave_type_code }`
-- Admin/Empleado:
-  - `POST /api/employee/burials` `{ firstName, lastName, dateOfDeath?, graveId, burialDate? }`
+Si estás dentro de backend/, no uses:
 
-## Notas
-- El frontend tiene proxy de desarrollo: las llamadas a `/api/*` se redirigen al backend (`http://localhost:3001`).
+npm --prefix backend ...
 
-## Postgres
-- Crea un archivo `backend/.env` a partir de `backend/.env.example` y completa tus credenciales.
-- El endpoint `GET /api/health/db` hace un `SELECT 1` para validar la conexión.
+Esto provocará:
+
+ENOENT: backend/backend/package.json
