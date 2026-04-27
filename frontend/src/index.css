@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+:root {
+  --az1: #0a1a4e;
+  --az2: #1a3a8f;
+  --az3: #1e4fd8;
+  --az4: #3a72e8;
+
+  --blanco: #ffffff;
+  --gris: #f4f6fb;
+
+  --nav-gradient: linear-gradient(90deg, var(--az1), var(--az2) 55%, var(--az3));
+  --nav-gradient-soft:
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--az1) 86%, transparent),
+      color-mix(in oklab, var(--az2) 86%, transparent) 55%,
+      color-mix(in oklab, var(--az3) 86%, transparent)
+    );
+  --hero-gradient: linear-gradient(135deg, var(--az1) 0%, var(--az2) 50%, var(--az4) 100%);
+  --btn-gradient: linear-gradient(90deg, var(--az2), var(--az3));
+
+  --text: #2a2a2a;
+  --text-h: #111111;
+  --muted: color-mix(in srgb, var(--text) 78%, var(--text-h) 22%);
+  --bg: var(--gris);
+  --surface: var(--blanco);
+  --surface-2: #f0f4ff;
+  --border: rgba(26, 58, 143, 0.13);
+  --hover: rgba(30, 79, 216, 0.08);
+
+  --overlay: rgba(0, 0, 0, 0.45);
+
+  --accent: var(--az3);
+  --on-accent: #ffffff;
+  --accent-bg: rgba(30, 79, 216, 0.14);
+  --accent-border: rgba(30, 79, 216, 0.55);
+
+  --code-bg: var(--surface);
+  --social-bg: rgba(28, 23, 18, 0.7);
+  --shadow:
+    rgba(30, 79, 216, 0.10) 0 0 0 1px,
+    rgba(15, 23, 42, 0.10) 0 12px 24px -12px,
+    rgba(15, 23, 42, 0.08) 0 6px 12px -8px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.12px;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--accent-border);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--text-h);
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 3px;
+}
+
+/* Transiciones suaves globales (hover/focus) */
+:where(a, button, input, select, textarea) {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease,
+    transform 0.3s ease;
+}
+
+:where(input, select, textarea) {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 180ms ease;
+}
+
+:where(input, select, textarea):focus-visible {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-bg) 70%, transparent);
+}
+
+:where(label):has(input:focus-visible, select:focus-visible, textarea:focus-visible) {
+  color: var(--text-h);
+}
+
+:where(button, a):not(:disabled) {
+  transition: filter 160ms ease, transform 120ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+:where(button, a):not(:disabled):hover {
+  filter: saturate(1.12) brightness(1.04);
+  box-shadow: 0 0 0 1px var(--accent-border);
+}
+
+:where(button, a):not(:disabled):active {
+  transform: translateY(1px);
+}
+
+/*
+  Utilidades UI premium/minimal (tokens only)
+  - Se aplican explícitamente vía clases para evitar side-effects.
+*/
+
+.ui-kicker {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* --- Reserva tipo “mapa” (sectores + celdas) --- */
+.ui-sector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  gap: 8px;
+}
+
+.ui-sector-btn {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 10px;
+  background: var(--surface);
+  color: var(--text);
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.ui-sector-btn:hover {
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  transform: translateY(-1px);
+}
+
+.ui-sector-btn[data-active='true'] {
+  background-image: var(--btn-gradient);
+  border-color: color-mix(in oklab, var(--accent) 60%, var(--border));
+  color: var(--on-accent);
+}
+
+.ui-sector-btn__code {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.1;
+}
