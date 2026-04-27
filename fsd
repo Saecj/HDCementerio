@@ -1,0 +1,95 @@
+[33mcommit 6f2bbc9a40ea593e5e7830103c6185a1afcefcda[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 17:02:44 2026 -0500
+
+    Se agrega documentación del sistema
+
+[33mcommit 02ae3cf68aeacd949719b2cbbfbcefa9d0967358[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:59:14 2026 -0500
+
+    Se crea archivo README del proyecto
+
+[33mcommit 515b202780e4d558d485f54b6aacbdf2241bfc48[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:57:04 2026 -0500
+
+    Se mejoran estilos CSS del sistema
+
+[33mcommit 3e761d5399d13cff284cfcfd25ed2465879247f0[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:53:46 2026 -0500
+
+    Se crean pruebas para módulos del backend
+
+[33mcommit 17063c44cd85f3425aebaf026bb43151197b1d87[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:51:38 2026 -0500
+
+    Se crea layout principal del sistema
+
+[33mcommit 461cff1cc02e98be7b758b371c09cd297ac24711[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:49:46 2026 -0500
+
+    Se crea apartado de cliente con sus módulos
+
+[33mcommit 44e02f898041dd599f0f9a05dc68f2504cb44475[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:48:14 2026 -0500
+
+    Se crea apartado de inicio de sesión
+
+[33mcommit 0cf1d11626be0a425175b42c67b1cf1d896e8298[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:43:57 2026 -0500
+
+    Se crea apartado de administración con sus módulos
+
+[33mcommit 15c0334ed70bf561512618e3925c76672236c751[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:39:53 2026 -0500
+
+    Se crea frontend y estilos principales
+
+[33mcommit 059a5e4f1c864e5439a5abe63fe8c19dec6a393f[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:36:10 2026 -0500
+
+    Se configuran roles y permisos del sistema
+
+[33mcommit bdab7571410578503dde1dd62592706badad5b40[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:33:25 2026 -0500
+
+    Se crea módulo de empleado con CRUD y controladores
+
+[33mcommit 1ca96b48f95b810e964c8fbf253f74a715aa8d9e[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:30:26 2026 -0500
+
+    Se crea módulo de cliente con CRUD y controladores
+
+[33mcommit ef62bcefb0ee0fbe08f9dd35b9fc2cb049bf3b6d[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:28:38 2026 -0500
+
+    Se crea módulo de autenticación
+
+[33mcommit 41bf0d6a0ac48d6f127314fdbc9b00298a73e606[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:25:33 2026 -0500
+
+    Se crea módulo de administración con CRUD, permisos y endpoints
+
+[33mcommit 8828b1a35ade63dc387a439857875f3c346cc63f[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:22:45 2026 -0500
+
+    Se crea la esctructura de la conexión con base de datos
+
+[33mcommit 2a706afd924b9c2c17f972d4466c1e17592c0cb8[m
+Author: Saecj <juanjesus12cj@gmail.com>
+Date:   Mon Apr 27 16:16:40 2026 -0500
+
+    Versión inicial del sistema de cementerio
