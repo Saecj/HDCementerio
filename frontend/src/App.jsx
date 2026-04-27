@@ -277,7 +277,7 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    // Si se pierde el rol admin, evita quedarse en tab admin.
+    // Si se pierde el rol admin, evita quedarse en tab admin. <div>Cabecera del sistema</div>
     if (activeTab === 'admin' && !isStaff) setActiveTab('search')
   }, [activeTab, me?.role])
 
